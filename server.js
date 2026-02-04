@@ -15,6 +15,8 @@ const apiRoutes = require('./src/routes/apiRoutes');
 app.use(BASE_URI, apiRoutes);
 app.use(process.env.BASE_URI, apiRoutes);
 
+// START SERVER
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Base URI: http://localhost:${PORT}${BASE_URI}`);
