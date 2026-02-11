@@ -12,6 +12,7 @@ const getAllDishes = async (req, res) => {
 const createDish = async (req, res) => {
     try {
         const newDish = new Dish(req.body);
+        await newDish.save();
         res.status(201).json(newDish);
     } catch (error) {
         res.status(400).json({ message: error.message });
