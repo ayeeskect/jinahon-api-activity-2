@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+
 const chefSchema = new mongoose.Schema({
-    name: String,
-    speciality: String
+    name:String,
+    specialty: String
 });
 
 module.exports = mongoose.model('Chef', chefSchema);
