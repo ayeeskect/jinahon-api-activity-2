@@ -1,4 +1,4 @@
-const Chef = require('../models/chefModels');
+const Chef = require('../models/chefModel');
 
 const createChef = async (req, res) => {
     try {
