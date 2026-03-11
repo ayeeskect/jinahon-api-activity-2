@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const { protect, authorize } = require('../middleware/authMiddleware');
+
 const {
   getAllDishes,
   createDish,
@@ -8,6 +10,9 @@ const {
   updateDish,
   deleteDish,    
 } = require('../controllers/dishController');
+
+router.get('/', getAllDishes);
+router.post('/', protect, authorize('admin', 'manager'), createDish);
 
 router.get('/dishes', getAllDishes);
 router.post('/dishes', createDish);

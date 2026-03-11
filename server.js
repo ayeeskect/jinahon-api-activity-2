@@ -13,9 +13,10 @@ const BASE_URI = process.env.BASE_URI || '/api/v1';
 // CONNECT ROUTES
 const apiRoutes = require('./src/routes/apiRoutes');
 const chefRoutes = require('./src/routes/chefRoutes');
+const authRoutes = require('./src/routes/authRoutes');
 app.use(BASE_URI, apiRoutes);
 app.use(`${BASE_URI}/chefs`, chefRoutes); 
-
+app.use(`${BASE_URI}/auth`, authRoutes);
 
 // START SERVER
 
