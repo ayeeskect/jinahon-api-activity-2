@@ -47,5 +47,26 @@ I chose to reference the Chef as a separate model because:
 
 4. **Scalability** - Chef documents might grow to include biography, awards, experience, and photos. This would bloat dish documents if embedded.
 
+## Activity #4: Securing the API
 
+### 1. Authentication vs Authorization
+
+**Question:** What is the difference between Authentication and Authorization in our code?
+
+**Answer:**  
+Authentication verifies the identity of the user by checking if the JWT token is valid using the `protect` middleware. Authorization determines what actions the user is allowed to perform using the `authorize` middleware by checking the user’s role and permissions.
+
+### 2. Security (bcrypt)
+
+**Question:** Why did we use bcryptjs instead of saving passwords as plain text in MongoDB?
+
+**Answer:**  
+bcryptjs is used to hash passwords before storing them in the database so they cannot be read if the database is compromised. Hashing is one-way, includes a salt for extra protection, and allows the system to safely compare passwords during login without storing them as plain text.
+
+### 3. JWT Structure
+
+**Question:** What does the protect middleware do when it receives a JWT from the client?
+
+**Answer:**  
+The `protect` middleware extracts the JWT from the Authorization header, verifies it using the server’s secret key, and decodes the user information inside the token. It then retrieves the user from the database and attaches the user data to `req.user` before allowing the request to continue. If the token is invalid or expired, it returns a `401 Unauthorized` response.
 

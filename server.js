@@ -11,15 +11,15 @@ const PORT = process.env.PORT || 3000;
 const BASE_URI = process.env.BASE_URI || '/api/v1';
 
 // CONNECT ROUTES
-const apiRoutes = require('./src/routes/apiRoutes');
+const dishRoutes = require('./src/routes/dishRoutes');  
 const chefRoutes = require('./src/routes/chefRoutes');
 const authRoutes = require('./src/routes/authRoutes');
-app.use(BASE_URI, apiRoutes);
+
+app.use(`${BASE_URI}/dishes`, dishRoutes);              
 app.use(`${BASE_URI}/chefs`, chefRoutes); 
 app.use(`${BASE_URI}/auth`, authRoutes);
 
 // START SERVER
-
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Base URI: http://localhost:${PORT}${BASE_URI}`);
